@@ -40,11 +40,6 @@ CARD_COLUMNS = 50
 CARD_TEXT_COLUMNS = 44
 CARD_WIDTH = "49%"
 LINK_SEPARATOR = "   "
-FONT_CREDIT = (
-    '<sub>Set in a subset of PxPlus IBM VGA 8x16 from <a href="https://int10h.org/oldschool-pc-fonts/">'
-    "The Ultimate Oldschool PC Font Pack</a> by VileR, "
-    '<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</sub>'
-)
 
 
 @dataclass(frozen=True)
@@ -261,6 +256,17 @@ def link_entry(name: str, first: bool, last: bool) -> Canvas:
     return canvas
 
 
+def arcade(name: str) -> Canvas:
+    label = "play DOS classics in your browser:"
+    name_column = len("$ ") + len(label) + 1
+    canvas = Canvas(name_column + len(name), Padding(EDGE_COLUMNS, 0, 1, 0))
+    canvas.text(0, 0, "$", "ac")
+    canvas.text(len("$ "), 0, label, "mu")
+    canvas.text(name_column, 0, name, "ac")
+    canvas.underlines.append((0, name_column, len(name)))
+    return canvas
+
+
 def heading(title: str, columns: int) -> Canvas:
     canvas = Canvas(columns, Padding(EDGE_COLUMNS, EDGE_COLUMNS, 1, 0))
     canvas.text(0, 0, title, "fg")
@@ -353,7 +359,7 @@ def readme(sections: dict[str, tuple[Canvas, str]], copy: dict, grid: Grid, disp
         f"<p>{block('projects')}</p>",
         f"<p>{cards}</p>",
         f"<p>{demos}</p>",
-        FONT_CREDIT,
+        f'<p><a href="{copy["arcade"][1]}">{block("arcade")}</a></p>',
     ]
     return "\n\n".join(parts) + "\n"
 
@@ -380,6 +386,7 @@ def sections_for(copy: dict, mark: list[str], snapshot: dict, columns: int) -> d
     links = copy["links"]
     for index, (name, _) in enumerate(links):
         sections[f"link-{index}"] = (link_entry(name, index == 0, index == len(links) - 1), name)
+    sections["arcade"] = (arcade(copy["arcade"][0]), f"Play DOS classics at {copy['arcade'][0]}")
     rows = card_rows(copy["projects"])
     for project in copy["projects"]:
         sections[f"card-{project['name']}"] = (card(project, rows), f"{project['name']}: {project['summary']}")
