@@ -2,65 +2,40 @@
   "host": "hediabed",
   "user": "hedi",
   "facts": [
-    [
-      "Role",
-      "Senior DevOps Engineer"
-    ],
-    [
-      "Kubernetes",
-      "7+ years"
-    ],
-    [
-      "Stack",
-      "Go, Rust, Kubernetes, GitOps"
-    ],
-    [
-      "Builds",
-      "opsmate, bughunter, arcade"
-    ],
-    [
-      "Web",
-      "hediabed.com"
-    ]
+    ["Role", "Senior DevOps Engineer"],
+    ["Location", "Germany"],
+    ["Kubernetes", "7+ years"],
+    ["Focus", "Kubernetes platform engineering"],
+    ["Builds", "opsmate, bughunter, arcade"],
+    ["Web", "hediabed.com"]
+  ],
+  "devops": [
+    ["Kubernetes", "EKS, AKS, GKE, self-managed"],
+    ["Infrastructure", "OpenTofu, Terraform"],
+    ["Delivery", "Docker, Helm, Argo CD, GitOps, CI/CD"],
+    ["Observability", "Prometheus, SigNoz, tracing"],
+    ["Access", "RBAC, time-bound roles, MFA"]
   ],
   "projects": [
-    [
-      "opsmate",
-      "https://github.com/HediAbed/opsmate",
-      "Terminal UI for inspecting and troubleshooting Kubernetes clusters.",
-      "opsmate on a local kind cluster: the dashboard flags a pod in ImagePullBackOff and a failing deployment, then the log viewer shows why checkout-worker crashes: panic: payment gateway credentials missing."
-    ],
-    [
-      "bughunter",
-      "https://github.com/HediAbed/bughunter",
-      "Static code analysis CLI with optional AI-assisted review.",
-      "bughunter running a live AI-assisted scan of OWASP NodeGoat: the progress panel shows shard 1 of 4, LLM requests and tokens climbing as the model reads files, with 17 findings already in from the static pass."
-    ]
+    {
+      "name": "opsmate",
+      "url": "https://github.com/HediAbed/opsmate",
+      "command": "opsmate",
+      "summary": "A keyboard-driven Go TUI for day-to-day Kubernetes work: resources, logs, Helm releases, port-forwards, and pod shells.",
+      "alt": "opsmate on a local kind cluster: the dashboard flags failing pods, the log viewer shows why checkout-worker crashes, then the resource browser."
+    },
+    {
+      "name": "bughunter",
+      "url": "https://github.com/HediAbed/bughunter",
+      "command": "bughunter analyze --with-ai",
+      "summary": "A Rust CLI for code analysis, Tree-sitter repository maps, structured reports, and configurable CI severity thresholds.",
+      "alt": "bughunter running a live AI-assisted scan of OWASP NodeGoat: the progress panel shows LLM requests, tokens and file reads climbing across shard 1 of 4."
+    }
   ],
-  "man": {
-    "name": "hedi",
-    "section": "1",
-    "seeAlso": [
-      [
-        "hediabed.com",
-        "1",
-        "https://www.hediabed.com"
-      ],
-      [
-        "arcade.hediabed.com",
-        "6",
-        "https://arcade.hediabed.com"
-      ],
-      [
-        "linkedin",
-        "1",
-        "https://www.linkedin.com/in/hedi-abed/"
-      ],
-      [
-        "credly",
-        "1",
-        "https://www.credly.com/users/hedi-abed/badges"
-      ]
-    ]
-  }
+  "links": [
+    ["hediabed.com", "https://www.hediabed.com"],
+    ["arcade.hediabed.com", "https://arcade.hediabed.com"],
+    ["linkedin", "https://www.linkedin.com/in/hedi-abed/"],
+    ["credly", "https://www.credly.com/users/hedi-abed/badges"]
+  ]
 }

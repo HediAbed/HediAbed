@@ -11,7 +11,7 @@ ASSETS = ROOT / "assets"
 RECORDINGS = ROOT / "recordings"
 BUILD = ROOT / "design" / "build.py"
 MAX_BYTES = 3_000_000
-MAX_SECONDS = 15.0
+MAX_SECONDS = 24.0
 OPAQUE = 255
 MS_PER_SECOND = 1000
 

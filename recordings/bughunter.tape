@@ -4,7 +4,7 @@ Set Shell "bash"
 Set FontFamily `"PxPlus IBM VGA 8x16"`
 Set FontSize 32
 Set Width 1952
-Set Height 832
+Set Height 1344
 Set Padding 32
 Set Framerate 24
 Set BorderRadius 0
@@ -15,12 +15,13 @@ Hide
 Type `export HOME="$RECORD_HOME" PATH="$BUGHUNTER_BIN_DIR:$PATH" BUGHUNTER_BACKEND=openai-compatible BUGHUNTER_API_URL=https://api.minimax.io/v1 BUGHUNTER_MODEL=MiniMax-M2.7-highspeed BUGHUNTER_API_TOKEN="$MINIMAX_API_KEY"; unset NO_COLOR CI; cd "$NODEGOAT_DIR"; rm -f report.json; PS1='\[\033[0;95m\]$\[\033[0m\] '; clear`
 Enter
 Sleep 500ms
-Show
-
 Type "bughunter analyze --project . --with-ai --format json --output report.json"
 Sleep 300ms
 Enter
-Sleep 10500ms
+Sleep 1200ms
+Show
+
+Sleep 19000ms
 Hide
 Ctrl+C
 Sleep 500ms
