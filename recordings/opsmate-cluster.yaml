@@ -1,0 +1,145 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: shop
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: storefront-web
+  namespace: shop
+  labels:
+    app: storefront-web
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: storefront-web
+  template:
+    metadata:
+      labels:
+        app: storefront-web
+    spec:
+      containers:
+        - name: storefront-web
+          image: nginx:1.27.3
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: 10m
+              memory: 32Mi
+            limits:
+              cpu: 100m
+              memory: 64Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: storefront-web
+  namespace: shop
+spec:
+  selector:
+    app: storefront-web
+  ports:
+    - port: 80
+      targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cart-cache-redis
+  namespace: shop
+  labels:
+    app: cart-cache-redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cart-cache-redis
+  template:
+    metadata:
+      labels:
+        app: cart-cache-redis
+    spec:
+      containers:
+        - name: redis
+          image: redis:7.4.1
+          ports:
+            - containerPort: 6379
+          resources:
+            requests:
+              cpu: 10m
+              memory: 32Mi
+            limits:
+              cpu: 100m
+              memory: 64Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cart-cache-redis
+  namespace: shop
+spec:
+  selector:
+    app: cart-cache-redis
+  ports:
+    - port: 6379
+      targetPort: 6379
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: checkout-worker
+  namespace: shop
+  labels:
+    app: checkout-worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: checkout-worker
+  template:
+    metadata:
+      labels:
+        app: checkout-worker
+    spec:
+      containers:
+        - name: checkout-worker
+          image: busybox:1.36.1
+          command: ["sh", "-c", "echo 'panic: payment gateway credentials missing' >&2; exit 1"]
+          resources:
+            requests:
+              cpu: 10m
+              memory: 16Mi
+            limits:
+              cpu: 50m
+              memory: 32Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: invoice-renderer
+  namespace: shop
+  labels:
+    app: invoice-renderer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: invoice-renderer
+  template:
+    metadata:
+      labels:
+        app: invoice-renderer
+    spec:
+      containers:
+        - name: invoice-renderer
+          image: registry.example.internal/invoice-renderer:does-not-exist
+          resources:
+            requests:
+              cpu: 10m
+              memory: 16Mi
+            limits:
+              cpu: 50m
+              memory: 32Mi

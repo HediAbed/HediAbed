@@ -1,0 +1,66 @@
+{
+  "host": "hediabed",
+  "user": "hedi",
+  "facts": [
+    [
+      "Role",
+      "Senior DevOps Engineer"
+    ],
+    [
+      "Kubernetes",
+      "7+ years"
+    ],
+    [
+      "Stack",
+      "Go, Rust, Kubernetes, GitOps"
+    ],
+    [
+      "Builds",
+      "opsmate, bughunter, arcade"
+    ],
+    [
+      "Web",
+      "hediabed.com"
+    ]
+  ],
+  "projects": [
+    [
+      "opsmate",
+      "https://github.com/HediAbed/opsmate",
+      "Terminal UI for inspecting and troubleshooting Kubernetes clusters.",
+      "opsmate on a local kind cluster: the dashboard flags a pod in ImagePullBackOff and a failing deployment, then the log viewer shows why checkout-worker crashes: panic: payment gateway credentials missing."
+    ],
+    [
+      "bughunter",
+      "https://github.com/HediAbed/bughunter",
+      "Static code analysis CLI with optional AI-assisted review.",
+      "bughunter running a live AI-assisted scan of OWASP NodeGoat: the progress panel shows shard 1 of 4, LLM requests and tokens climbing as the model reads files, with 17 findings already in from the static pass."
+    ]
+  ],
+  "man": {
+    "name": "hedi",
+    "section": "1",
+    "seeAlso": [
+      [
+        "hediabed.com",
+        "1",
+        "https://www.hediabed.com"
+      ],
+      [
+        "arcade.hediabed.com",
+        "6",
+        "https://arcade.hediabed.com"
+      ],
+      [
+        "linkedin",
+        "1",
+        "https://www.linkedin.com/in/hedi-abed/"
+      ],
+      [
+        "credly",
+        "1",
+        "https://www.credly.com/users/hedi-abed/badges"
+      ]
+    ]
+  }
+}

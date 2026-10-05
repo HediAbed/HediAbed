@@ -1,0 +1,36 @@
+{
+  "repos": [
+    "algorithms",
+    "binary-trees-algos",
+    "bughunter",
+    "go-singleton",
+    "graphql",
+    "opsmate",
+    "r2dbc",
+    "rsocket-graphql",
+    "vagrant-kubernetes-cluster"
+  ],
+  "totalBytes": 3744911,
+  "languages": [
+    [
+      "Rust",
+      1898644
+    ],
+    [
+      "Go",
+      1764130
+    ],
+    [
+      "Java",
+      49343
+    ],
+    [
+      "Makefile",
+      28058
+    ],
+    [
+      "Shell",
+      3944
+    ]
+  ]
+}
